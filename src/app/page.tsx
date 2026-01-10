@@ -215,9 +215,7 @@ function Particles({ count = 80, isDark }: { count?: number; isDark: boolean }) 
       <bufferGeometry>
         <bufferAttribute
           attach="attributes-position"
-          count={count}
-          array={positions}
-          itemSize={3}
+          args={[positions, 3]}
         />
       </bufferGeometry>
       <pointsMaterial
@@ -291,12 +289,12 @@ function Scene3D({ isDark }: { isDark: boolean }) {
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' as const } },
 };
 
 const fadeInLeft = {
   hidden: { opacity: 0, x: -50 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: 'easeOut' as const } },
 };
 
 const stagger = {
