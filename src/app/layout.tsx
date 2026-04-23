@@ -1,28 +1,67 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata, Viewport } from 'next';
+import { JetBrains_Mono, Manrope, Space_Grotesk } from 'next/font/google';
+
+import './globals.css';
+
+const display = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['500', '600', '700'],
+});
+
+const body = Manrope({
+  subsets: ['latin'],
+  variable: '--font-body',
+  weight: ['400', '500', '600', '700'],
+});
+
+const mono = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  weight: ['400', '500', '600'],
+});
 
 export const metadata: Metadata = {
-  title: "Ayan Chatterjee | Full Stack Developer & AI/ML Engineer",
-  description: "Software Engineer specializing in Full Stack Development, AI/ML, and DevOps. Building scalable applications and intelligent systems. Based in Bengaluru, India.",
+  title: 'Ayan Chatterjee | AI Engineer | Generative AI & Agentic Systems',
+  description:
+    'AI Engineer building production-grade LLM applications, RAG systems, autonomous agents, and full stack AI products.',
   keywords: [
-    "Ayan Chatterjee",
-    "Software Engineer",
-    "Full Stack Developer",
-    "AI/ML Engineer",
-    "React",
-    "Next.js",
-    "Python",
-    "TypeScript",
-    "DevOps",
-    "AWS",
-    "Bengaluru"
+    'Ayan Chatterjee',
+    'AI Engineer',
+    'Generative AI',
+    'Agentic AI',
+    'RAG Pipelines',
+    'LLM Engineer',
+    'Full Stack AI Developer',
+    'Next.js Portfolio',
+    'FastAPI',
+    'PyTorch',
   ],
-  authors: [{ name: "Ayan Chatterjee" }],
+  authors: [{ name: 'Ayan Chatterjee' }],
+  creator: 'Ayan Chatterjee',
+  publisher: 'Ayan Chatterjee',
+  category: 'technology',
   openGraph: {
-    title: "Ayan Chatterjee | Full Stack Developer & AI/ML Engineer",
-    description: "Software Engineer specializing in Full Stack Development, AI/ML, and DevOps.",
-    type: "website",
+    title: 'Ayan Chatterjee | AI Engineer | Generative AI & Agentic Systems',
+    description:
+      'Portfolio of an AI Engineer focused on LLM products, RAG pipelines, autonomous agents, and scalable AI systems.',
+    type: 'website',
+    locale: 'en_US',
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Ayan Chatterjee | AI Engineer | Generative AI & Agentic Systems',
+    description:
+      'Building end-to-end AI systems with LLMs, GenAI, RAG pipelines, and full stack product execution.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: '#050816',
 };
 
 export default function RootLayout({
@@ -31,14 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
-      <body className="antialiased" suppressHydrationWarning>
-        {children}
-      </body>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
