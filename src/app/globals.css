@@ -81,6 +81,20 @@ select {
   isolation: isolate;
 }
 
+.hero-perspective {
+  perspective: 1800px;
+}
+
+.hero-depth,
+.project-tilt {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+.depth-layer {
+  transform: translateZ(34px);
+}
+
 .ambient-grid {
   position: fixed;
   inset: 0;
@@ -149,6 +163,25 @@ select {
 
 .terminal-line:last-child::after {
   display: none;
+}
+
+.orbital-ring {
+  animation: orbit-spin 22s linear infinite;
+}
+
+.orbital-ring-reverse {
+  animation-direction: reverse;
+  animation-duration: 28s;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

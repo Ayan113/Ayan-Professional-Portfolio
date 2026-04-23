@@ -165,6 +165,119 @@ function KeywordTicker() {
   );
 }
 
+function HeroVisual() {
+  const signalChips = [
+    'RAG Systems',
+    'Agentic Workflows',
+    'LLM Products',
+    'Production APIs',
+  ];
+
+  return (
+    <Reveal className="relative">
+      <div className="hero-perspective relative">
+        <motion.div
+          animate={{
+            y: [0, -10, 0],
+            rotateX: [0, 2, 0, -2, 0],
+            rotateY: [0, -4, 0, 4, 0],
+          }}
+          transition={{ duration: 12, repeat: Number.POSITIVE_INFINITY, ease: 'easeInOut' }}
+          className="hero-depth relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.045] p-4 shadow-[0_40px_120px_rgba(2,8,23,0.48)] backdrop-blur-2xl md:p-5"
+        >
+          <div className="absolute inset-x-6 top-5 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
+          <div className="absolute -right-8 top-10 h-40 w-40 rounded-full bg-cyan-400/16 blur-3xl" />
+          <div className="absolute -left-8 bottom-10 h-44 w-44 rounded-full bg-blue-500/16 blur-3xl" />
+          <div className="orbital-ring absolute left-[10%] top-[12%] h-56 w-56 rounded-full border border-cyan-300/12" />
+          <div className="orbital-ring orbital-ring-reverse absolute bottom-[10%] right-[8%] h-44 w-44 rounded-full border border-blue-300/10" />
+
+          <div className="grid gap-5 xl:grid-cols-[0.88fr_1.12fr]">
+            <div className="hero-depth relative overflow-hidden rounded-[26px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.18),transparent_52%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-3">
+              <div className="depth-layer relative aspect-[4/5] overflow-hidden rounded-[22px] border border-white/8">
+                <Image
+                  src="/ayan-portrait.jpeg"
+                  alt="Portrait of Ayan Chatterjee"
+                  fill
+                  priority
+                  sizes="(min-width: 1280px) 24rem, (min-width: 768px) 40vw, 100vw"
+                  className="object-cover object-[center_18%]"
+                />
+              </div>
+              <div className="pointer-events-none absolute inset-x-6 bottom-6 rounded-2xl border border-white/12 bg-[rgba(6,10,20,0.74)] p-4 backdrop-blur-xl">
+                <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cyan-200/80">
+                  System Focus
+                </p>
+                <p className="mt-2 text-sm leading-6 text-white">
+                  LLM applications, agent orchestration, multimodal UX, and scalable backend design.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-4">
+              <div className="rounded-[26px] border border-white/10 bg-black/20 p-5">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 text-sm text-slate-300">
+                    <StackIcon />
+                    Runtime blueprint
+                  </div>
+                  <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-emerald-200">
+                    live
+                  </span>
+                </div>
+                <div className="mt-5 space-y-3 font-mono text-sm text-slate-300">
+                  <div className="terminal-line">
+                    <span className="text-cyan-300">$</span> ingest context
+                  </div>
+                  <div className="terminal-line">
+                    <span className="text-cyan-300">$</span> retrieve signals
+                  </div>
+                  <div className="terminal-line">
+                    <span className="text-cyan-300">$</span> orchestrate reasoning
+                  </div>
+                  <div className="terminal-line">
+                    <span className="text-cyan-300">$</span> ship usable product
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-2">
+                {signalChips.map((chip, index) => (
+                  <motion.div
+                    key={chip}
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{
+                      duration: 3.5 + index * 0.4,
+                      repeat: Number.POSITIVE_INFINITY,
+                      ease: 'easeInOut',
+                      delay: index * 0.15,
+                    }}
+                    className="rounded-[20px] border border-white/10 bg-white/[0.055] px-4 py-4 text-sm font-medium text-slate-200 shadow-[0_20px_45px_rgba(5,10,20,0.24)]"
+                  >
+                    {chip}
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-3 xl:grid-cols-1">
+                {heroMetrics.map((metric) => (
+                  <div
+                    key={metric.label}
+                    className="rounded-[24px] border border-white/10 bg-white/[0.045] p-5"
+                  >
+                    <p className="font-display text-3xl font-semibold text-white">{metric.value}</p>
+                    <p className="mt-1 text-sm font-medium text-slate-200">{metric.label}</p>
+                    <p className="mt-3 text-sm leading-6 text-slate-400">{metric.detail}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </Reveal>
+  );
+}
+
 function ProjectCard({
   title,
   category,
@@ -174,13 +287,15 @@ function ProjectCard({
   stack,
   impact,
   highlight,
+  links,
 }: (typeof projects)[number]) {
   return (
     <Reveal>
       <motion.article
-        whileHover={{ y: -8 }}
+        style={{ transformPerspective: 1800 }}
+        whileHover={{ y: -8, rotateX: 1.25, rotateY: -1.25 }}
         transition={{ duration: 0.25 }}
-        className="group relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.045] p-6 shadow-[0_30px_80px_rgba(3,8,20,0.35)] backdrop-blur-xl md:p-7"
+        className="group project-tilt relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.045] p-6 shadow-[0_30px_80px_rgba(3,8,20,0.35)] backdrop-blur-xl md:p-7"
       >
         <div className="pointer-events-none absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(103,232,249,0.16),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.14),transparent_45%)]" />
@@ -238,6 +353,25 @@ function ProjectCard({
                 ))}
               </div>
             </div>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            {links.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                target="_blank"
+                rel="noreferrer"
+                className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition hover:-translate-y-0.5 ${
+                  link.primary
+                    ? 'border border-cyan-300/20 bg-cyan-300/10 text-cyan-100 hover:border-cyan-300/40 hover:bg-cyan-300/16'
+                    : 'border border-white/10 bg-white/[0.05] text-slate-200 hover:border-white/20 hover:bg-white/[0.08]'
+                }`}
+              >
+                {link.label}
+                <ArrowUpRightIcon />
+              </a>
+            ))}
           </div>
         </div>
       </motion.article>
@@ -349,74 +483,7 @@ export function PortfolioPage() {
             </div>
           </Reveal>
 
-          <Reveal className="relative">
-            <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.045] p-4 shadow-[0_40px_120px_rgba(2,8,23,0.48)] backdrop-blur-2xl md:p-5">
-              <div className="absolute inset-x-6 top-5 h-px bg-gradient-to-r from-transparent via-cyan-300/50 to-transparent" />
-              <div className="grid gap-5 xl:grid-cols-[0.88fr_1.12fr]">
-                <div className="relative overflow-hidden rounded-[26px] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.18),transparent_52%),linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-3">
-                  <div className="relative aspect-[4/5] overflow-hidden rounded-[22px] border border-white/8">
-                    <Image
-                      src="/photo.png"
-                      alt="Portrait of Ayan Chatterjee"
-                      fill
-                      priority
-                      sizes="(min-width: 1280px) 24rem, (min-width: 768px) 40vw, 100vw"
-                      className="object-cover object-center"
-                    />
-                  </div>
-                  <div className="pointer-events-none absolute inset-x-6 bottom-6 rounded-2xl border border-white/12 bg-[rgba(6,10,20,0.74)] p-4 backdrop-blur-xl">
-                    <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-cyan-200/80">
-                      System Focus
-                    </p>
-                    <p className="mt-2 text-sm leading-6 text-white">
-                      LLM applications, agent orchestration, multimodal UX, and scalable backend design.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="grid gap-4">
-                  <div className="rounded-[26px] border border-white/10 bg-black/20 p-5">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2 text-sm text-slate-300">
-                        <StackIcon />
-                        Runtime blueprint
-                      </div>
-                      <span className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-emerald-200">
-                        live
-                      </span>
-                    </div>
-                    <div className="mt-5 space-y-3 font-mono text-sm text-slate-300">
-                      <div className="terminal-line">
-                        <span className="text-cyan-300">$</span> ingest context
-                      </div>
-                      <div className="terminal-line">
-                        <span className="text-cyan-300">$</span> retrieve signals
-                      </div>
-                      <div className="terminal-line">
-                        <span className="text-cyan-300">$</span> orchestrate reasoning
-                      </div>
-                      <div className="terminal-line">
-                        <span className="text-cyan-300">$</span> ship usable product
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="grid gap-4 sm:grid-cols-3 xl:grid-cols-1">
-                    {heroMetrics.map((metric) => (
-                      <div
-                        key={metric.label}
-                        className="rounded-[24px] border border-white/10 bg-white/[0.045] p-5"
-                      >
-                        <p className="font-display text-3xl font-semibold text-white">{metric.value}</p>
-                        <p className="mt-1 text-sm font-medium text-slate-200">{metric.label}</p>
-                        <p className="mt-3 text-sm leading-6 text-slate-400">{metric.detail}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Reveal>
+          <HeroVisual />
         </div>
       </section>
 

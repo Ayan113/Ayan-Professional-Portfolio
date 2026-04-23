@@ -18,6 +18,13 @@ export type Project = {
   stack: string[];
   impact: string[];
   highlight: string;
+  links: ProjectLink[];
+};
+
+export type ProjectLink = {
+  label: string;
+  href: string;
+  primary?: boolean;
 };
 
 export type SkillCategory = {
@@ -108,68 +115,115 @@ export const systemPrinciples = [
 
 export const projects: Project[] = [
   {
-    title: 'Generative Vision AI',
-    category: 'Generative AI Product',
-    headline: 'A multimodal image generation system built for quality, iteration speed, and deployment-readiness.',
+    title: 'FinInsight AI',
+    category: 'Financial GenAI Platform',
+    headline:
+      'A full-stack financial intelligence workspace that blends RAG, conversational analysis, portfolio diagnostics, market insights, visual analytics, and voice interaction.',
     problem:
-      'Generative vision workflows often break down between experimentation and delivery because data preparation, model quality, and inference optimization are handled in separate silos.',
+      'Financial research is usually split across dashboards, reports, chat tools, and manual comparison flows, which makes decision support slow and fragmented.',
     solution:
-      'Built a unified generation workflow around GAN-based exploration and diffusion-driven refinement, with reusable preprocessing, prompt-aware generation, quality evaluation, and optimized inference paths for higher-fidelity outputs.',
-    stack: ['Python', 'PyTorch', 'GANs', 'Diffusion Models', 'OpenCV', 'FastAPI'],
+      'Built a modular AI product with Next.js App Router, route handlers, a provider-agnostic LLM layer, document-grounded retrieval, portfolio analysis logic, market intelligence workflows, and optional voice support in one interface.',
+    stack: ['Next.js', 'TypeScript', 'Framer Motion', 'RAG', 'Vercel Blob', 'Voice AI'],
     impact: [
-      'Improved model quality by 18% through tuning, augmentation, and iterative evaluation.',
-      'Reduced experimentation friction with a repeatable generation and evaluation pipeline.',
-      'Framed the system as a product-ready creative engine rather than a research-only prototype.',
+      'Unifies chatbot, document-grounded RAG, portfolio analysis, market theme exploration, charts, and voice interaction in one production-oriented app.',
+      'Implements persistent vector storage through Vercel Blob with local fallback rather than keeping retrieval state ephemeral.',
+      'Uses a modular controller and service architecture instead of a single demo-only code path.',
     ],
-    highlight: 'Higher-fidelity generation with faster iteration loops',
-  },
-  {
-    title: 'Insurance Claim AI Agent',
-    category: 'Agentic AI System',
-    headline: 'An autonomous workflow agent for faster claims handling with traceable decisions.',
-    problem:
-      'Insurance operations suffer from slow manual claim review, inconsistent decisions, and weak auditability across repetitive document-heavy workflows.',
-    solution:
-      'Designed an AI agent that interprets claim inputs, applies NLP-based extraction, routes task steps through workflow logic, and produces structured summaries with decision trails for human approval and operational visibility.',
-    stack: ['Python', 'LLMs', 'NLP', 'Workflow Orchestration', 'FastAPI', 'PostgreSQL'],
-    impact: [
-      'Delivered 95% faster processing for repetitive claim workflows.',
-      'Created auditable traces across reasoning steps, actions, and approvals.',
-      'Reduced manual handoffs by combining agent automation with clear human checkpoints.',
+    highlight: 'Financial AI workspace with chat, RAG, analytics, and voice',
+    links: [
+      { label: 'Live App', href: 'https://fin-x-ai-six.vercel.app/', primary: true },
+      { label: 'GitHub Repo', href: 'https://github.com/Ayan113/FinX_AI' },
     ],
-    highlight: '95% faster claim workflow execution with auditability built in',
   },
   {
     title: 'Documind AI',
     category: 'RAG Application',
-    headline: 'A grounded document intelligence system for answering questions over complex knowledge sources.',
+    headline:
+      'A full-stack document intelligence system for chatting with PDFs through a retrieval-augmented generation pipeline.',
     problem:
-      'Document-heavy teams lose time manually searching PDFs, policies, and reports, while naive chat experiences hallucinate or fail to cite source context.',
+      'Long PDFs are painful to search manually, and generic chat over documents often fails to ground answers in real source context.',
     solution:
-      'Built a RAG pipeline with chunking, embeddings, retrieval, context assembly, and answer generation so users can query large document collections through a fast, citation-aware interface.',
-    stack: ['RAG', 'Embeddings', 'Vector Search', 'LLMs', 'Next.js', 'FastAPI'],
+      'Built a multi-document RAG flow with PDF ingestion, chunking, embeddings, FAISS retrieval, streaming responses, and source attribution so users can ask questions and get context-aware answers with references.',
+    stack: ['FastAPI', 'LangChain', 'FAISS', 'LLaMA 3', 'React', 'Tailwind CSS'],
     impact: [
-      'Turned static documents into an interactive knowledge surface.',
-      'Improved trust through grounded retrieval and context-linked responses.',
-      'Designed the architecture to scale from a single repository to evolving multi-document corpora.',
+      'Supports multiple PDFs and document switching instead of limiting the experience to a single uploaded source.',
+      'Streams answers and shows source snippets with page references to improve trust in the response.',
+      'Covers the full RAG workflow from document ingestion to grounded answer generation.',
     ],
-    highlight: 'Grounded Q&A over large document collections',
+    highlight: 'RAG PDF chat with source-grounded answers',
+    links: [
+      { label: 'Live App', href: 'https://documind-ai-navy.vercel.app/', primary: true },
+      { label: 'GitHub Repo', href: 'https://github.com/Ayan113/Documind.AI' },
+    ],
   },
   {
-    title: 'FinInsight AI',
-    category: 'Full Stack AI Assistant',
-    headline: 'A financial intelligence copilot combining retrieval, chat, and voice-first interaction.',
+    title: 'Agentic AI for Autonomous Network Optimization',
+    category: 'Agentic AI System',
+    headline:
+      'A multi-agent AI system for autonomous network monitoring and optimization with LLM-powered decision-making and a real-time dashboard.',
     problem:
-      'Financial information is fragmented across reports, metrics, and user questions, making it hard to move from raw data to actionable insight in one workflow.',
+      'Network operations are often reactive, noisy, and manually coordinated, which slows response time when health degrades or incidents emerge.',
     solution:
-      'Architected an AI assistant that blends RAG, conversational querying, insight summarization, and voice interaction so users can explore financial signals through natural language instead of manual dashboard hopping.',
-    stack: ['TypeScript', 'Next.js', 'LLMs', 'RAG', 'Voice Interfaces', 'PostgreSQL'],
+      'Designed a coordinated Monitor → Decision → Action loop with specialized agents, network simulation, LLM-backed analysis, a feedback layer, and a web dashboard for interactive control and visibility.',
+    stack: ['Python', 'FastAPI', 'LLM Agents', 'Network Simulation', 'Render', 'Dashboard UI'],
     impact: [
-      'Unified retrieval, conversation, and voice into a single product experience.',
-      'Improved exploration speed by translating complex data questions into guided conversational flows.',
-      'Positioned the project as a full-stack AI product with user-facing clarity, not just a backend demo.',
+      'Project README reports network health improvement from 93 to 97 during demo runs.',
+      'Project README reports latency reduction from 29.7ms to 20.1ms and packet loss reduction from 1.40% to 0.39%.',
+      'Transforms agent orchestration into a visible product with REST APIs and scenario simulation, not just a backend concept.',
     ],
-    highlight: 'Chat + retrieval + voice in one financial copilot',
+    highlight: 'Multi-agent optimization loop with live network simulation',
+    links: [
+      {
+        label: 'Live Demo',
+        href: 'https://agentic-network-optimizeragentic-ai-for.onrender.com',
+        primary: true,
+      },
+      { label: 'GitHub Repo', href: 'https://github.com/Ayan113/Agentic-AI-for-Autonomous-Network-Optimization' },
+    ],
+  },
+  {
+    title: 'Cloud-Based Intelligent Support Ticket Classification Platform',
+    category: 'ML Classification System',
+    headline:
+      'A production-style support ticket triage platform that classifies category and priority through supervised machine learning.',
+    problem:
+      'Support teams lose time on manual triage, misrouted tickets, and inconsistent prioritization across high ticket volumes.',
+    solution:
+      'Built a FastAPI-based ML system using TF-IDF and Logistic Regression with confidence scores, batch classification, Swagger docs, Docker packaging, and AWS-oriented deployment paths.',
+    stack: ['Python', 'FastAPI', 'scikit-learn', 'Docker', 'AWS', 'SQLite'],
+    impact: [
+      'Project README positions the system as reducing triage time by 90% with 85%+ category accuracy.',
+      'Supports confidence-aware human-in-the-loop review and batch workflows instead of only single-ticket predictions.',
+      'Ships live API docs and deployment-ready containerization for production-style evaluation.',
+    ],
+    highlight: '90% faster ticket triage with ML-driven routing',
+    links: [
+      { label: 'Live Demo', href: 'https://ticket-classifier-api-ojuy.onrender.com', primary: true },
+      { label: 'API Docs', href: 'https://ticket-classifier-api-ojuy.onrender.com/docs' },
+      { label: 'GitHub Repo', href: 'https://github.com/Ayan113/Cloud-Based-Intelligent-Support-Ticket-Classification-Platform' },
+    ],
+  },
+  {
+    title: 'MediInsight AI',
+    category: 'Healthcare GenAI Product',
+    headline:
+      'A full-stack healthcare GenAI application combining multimodal imaging support, wellness planning, mental wellness chat, and document question answering.',
+    problem:
+      'Healthcare demos often isolate one capability at a time, which makes it hard to show how multimodal AI, retrieval, and usable interfaces work together in a single product.',
+    solution:
+      'Built a React and Node.js application powered by Groq text and vision inference, with a local RAG pipeline, modular backend services, and separate frontend/backend deployments for realistic product structure.',
+    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'Groq', 'Local RAG'],
+    impact: [
+      'Combines imaging analysis, health planning, mental wellness chat, and document QA in one interview-ready healthcare AI experience.',
+      'Uses Groq for both text and vision flows while keeping retrieval grounded through local chunk search and citations.',
+      'Separates frontend and backend services cleanly for more realistic deployment and iteration workflows.',
+    ],
+    highlight: 'Healthcare AI app with multimodal and retrieval workflows',
+    links: [
+      { label: 'Frontend', href: 'https://frontend-black-rho-86.vercel.app/', primary: true },
+      { label: 'Backend', href: 'https://backend-gilt-iota-74.vercel.app/' },
+      { label: 'GitHub Repo', href: 'https://github.com/Ayan113/Medi-Insight_AI' },
+    ],
   },
 ];
 
