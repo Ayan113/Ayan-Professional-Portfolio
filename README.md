@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ayan Chatterjee Portfolio
 
-## Getting Started
+A premium AI Engineer portfolio built with Next.js, Tailwind CSS, and Framer Motion.
 
-First, run the development server:
+This project positions Ayan as an engineer focused on:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- AI/ML engineering
+- Generative AI
+- Agentic AI systems
+- Full stack AI applications
+
+The site is designed to feel closer to OpenAI, Vercel, and Anthropic-inspired product branding: dark, minimal, technical, and polished.
+
+## Live Site
+
+- Production: `https://ayan-portfolio-six.vercel.app/`
+- Repository: `https://github.com/Ayan113/Ayan-Professional-Portfolio`
+
+## Highlights
+
+- Strong AI-focused hero section with rotating keyword ticker
+- Product-style project case studies for GenAI, RAG, and agentic systems
+- Categorized technical skills for AI, backend, data, and DevOps
+- Outcome-driven experience section
+- Custom "My AI Engineering Approach" system-design section
+- SEO metadata and structured data for better discoverability
+- Responsive dark UI with glassmorphism, gradients, and motion
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- Framer Motion
+- TypeScript
+
+## Project Structure
+
+```text
+src/
+  app/
+    globals.css
+    layout.tsx
+    page.tsx
+  components/
+    portfolio/
+      portfolio-page.tsx
+  data/
+    portfolio.ts
+public/
+  photo.png
+  avatar-cartoon.jpg
+  logos/
+  certificates/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open `http://localhost:3000`.
 
-## Learn More
+## Production Checks
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Customization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Most portfolio content is centralized in:
 
-## Deploy on Vercel
+- `src/data/portfolio.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Update that file to edit:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- hero copy
+- project case studies
+- skills
+- experience
+- contact links
+- SEO-facing profile details
+
+## Deployment
+
+This project is configured for Vercel deployment.
+
+Typical deploy flow:
+
+```bash
+npm run build
+npx vercel --prod
+```
+
+## Notes
+
+- The contact email in `src/data/portfolio.ts` is still a placeholder and should be updated before long-term production use.
+- The currently deployed Vercel site may lag behind the latest GitHub commit until a fresh production deployment is completed.
